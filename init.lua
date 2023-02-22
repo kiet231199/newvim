@@ -1,14 +1,26 @@
--- Disable netrw at the very start of your init.lua (strongly advised)
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
+-- Define neovim base path
 vim.g.neovim_path = "/home/kietpham/neovim"
-vim.g.config_path = vim.g.neovim_path .. "/config"
 
-vim.g.python3_host_prog = vim.g.neovim_path .. "/tools/python-3.10.7/bin/python3"
-vim.g.node_host_prog = vim.g.neovim_path .. "/tools/node-v16.17.1/lib/node_modules/neovim/bin/cli.js"
+local global_config = {
+  -- Disable netrw at the very start of your init.lua (strongly advised)
+  loaded_netrw = 1,
+  loaded_netrwPlugin = 1,
 
-vim.cmd [[
+  -- Define path
+  config_path = vim.g.neovim_path .. "/config",
+
+  -- Define path for python3 and nodejs framework
+  python3_host_prog = vim.g.neovim_path .. "/tools/python-3.10.7/bin/python3",
+  node_host_prog = vim.g.neovim_path .. "/tools/node-v16.17.1/lib/node_modules/neovim/bin/cli.js",
+}
+
+-- Load all global_config
+for option, config in pairs(global_config) do
+  vim.g[option] = config
+end
+
+-- Set nvim as default git editor
+vim.cmd[[
 	if has('nvim') && executable('nvr')
 		let $GIT_EDITOR = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
 	endif
