@@ -42,7 +42,16 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Call default settings
 require("core")
-require("plugins")
 
 -- Call user settings
-pcall(require, "custom")
+local custom_exits, custom = pcall(require, "custom")
+if custom_exits then
+  require("custom.highlights")
+  require("custom.options")
+else
+  require("core.highlights")
+  require("core.options")
+end
+
+-- Override keymaps
+require("core.utils").load_mappings()

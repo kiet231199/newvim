@@ -52,5 +52,4 @@ highlight(0, "CmpItemAbbrMatchFuzzy", { fg = "Red", bold = true })
 highlight(0, "CmpItemAbbrMatchFuzzyDefault", { fg = "Red", bold = true })
 highlight(0, "CmpItemKindText", { fg = "Yellow", bold = true })
 
--- CursorLine
-highlight(0, "CursorLineNr", { fg = "Yellow", bold = true })
+highlight(0, "CursorLineNr", { fg = "Yellow" })

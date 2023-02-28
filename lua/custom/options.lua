@@ -38,7 +38,7 @@ local options = {
 	synmaxcol      = 300,
 	filetype  	   = on,
 	whichwrap  	   = "bs<>[]hl",
-	diffopt		   = { "filler" , "vertical" },
+	diffopt        = { "vertical", "closeoff" },
 }
 
 vim.opt.listchars:append "space:▁"
