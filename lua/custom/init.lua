@@ -1,3 +1,5 @@
+require("custom.options")
+
 local custom = {}
 
 custom.plugins = {
@@ -8,7 +10,7 @@ custom.plugins = {
 			require("custom.config.alpha")
 		end,
 	},
-  ['lewis6991/impatient.nvim'] = {
+	['lewis6991/impatient.nvim'] = {
 		-- Desc: Boost startup time
 		priority = 1000,
 		config = function()
@@ -30,6 +32,9 @@ custom.plugins = {
 		-- Desc: File explorer
 		config = function()
 			require("custom.config.nvim-tree")
+		end,
+		init = function()
+			require("core.utils").load_mappings("nvimtree")
 		end,
 		keys = {
 			{ "<F5>", "<cmd>NvimTreeFindFileToggle<CR>", mode = "", silent = true, noremap = true  },

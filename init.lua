@@ -2,21 +2,21 @@
 vim.g.neovim_path = "/home/kietpham/neovim"
 
 local global_config = {
-  -- Disable netrw at the very start of your init.lua (strongly advised)
-  loaded_netrw = 1,
-  loaded_netrwPlugin = 1,
+	-- Disable netrw at the very start of your init.lua (strongly advised)
+	loaded_netrw = 1,
+	loaded_netrwPlugin = 1,
 
-  -- Define path
-  config_path = vim.g.neovim_path .. "/config",
+	-- Define path
+	config_path = vim.g.neovim_path .. "/config",
 
-  -- Define path for python3 and nodejs framework
-  python3_host_prog = vim.g.neovim_path .. "/tools/python-3.10.7/bin/python3",
-  node_host_prog = vim.g.neovim_path .. "/tools/node-v16.17.1/lib/node_modules/neovim/bin/cli.js",
+	-- Define path for python3 and nodejs framework
+	python3_host_prog = vim.g.neovim_path .. "/tools/python-3.10.7/bin/python3",
+	node_host_prog = vim.g.neovim_path .. "/tools/node-v16.17.1/lib/node_modules/neovim/bin/cli.js",
 }
 
 -- Load all global_config
 for option, config in pairs(global_config) do
-  vim.g[option] = config
+	vim.g[option] = config
 end
 
 -- Set nvim as default git editor
@@ -44,14 +44,10 @@ vim.opt.rtp:prepend(lazypath)
 require("core")
 
 -- Call user settings
-local custom_exits, custom = pcall(require, "custom")
-if custom_exits then
-  require("custom.highlights")
-  require("custom.options")
-else
-  require("core.highlights")
-  require("core.options")
-end
+pcall(require, "custom")
 
 -- Override keymaps
 require("core.utils").load_mappings()
+
+-- Override highlights
+require("core.utils").load_highlights()

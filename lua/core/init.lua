@@ -6,4 +6,5 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+require("core.options")
 require("core.plugins")
